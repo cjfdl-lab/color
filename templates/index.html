@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+<head onclick="">
+  <title>风景图片上色</title>
+  <style type="text/css">
+   .pageheader{
+	 width:100%;
+	 min-width: 1180px;
+	 height:50px;
+	 background-color:white;
+	 z-index:100;
+   }
+   .pagenav{
+	 width:1180px;
+	 height:50px;
+	 color:rgb(154,151,145);
+	 margin:0 auto;
+	 text-align:left;
+	 line-height:50px;
+   }
+
+   .head{
+	 width:100%;
+	 min-width: 1180px;
+	 height:400px;
+	 background-color:rgb(157, 224, 233);
+   }
+   .head_center{
+	 width:1180px;
+	 height:400px;
+	 margin:0 auto;
+   }
+   .show{
+	 width: 1180px;
+	 height: 100px;
+	 text-align: center;
+	 font-size: 30px;
+	 line-height: 100px;
+	 color: white;
+   }
+   #img_ex1{
+	 width: 300px;
+	 height: 250px;
+	 margin-right: 30px;
+	 float:left;
+	 position: relative;
+   }
+   #img_ex1 img{
+	 width: 300px;
+	 height: 200px;
+   }
+
+   #img_ex2{
+	 width: 300px;
+	 height: 250px;
+	 margin-right: 30px;
+	 float:left;
+	 position: relative;
+   }
+   #img_ex2 img{
+	 width: 300px;
+	 height: 200px;
+   }
+
+   #img_ex3{
+	 width: 300px;
+	 height: 250px;
+	 margin-right: 30px;
+	 float:left;
+	 position: relative;
+   }
+   #img_ex3 img{
+	 width: 300px;
+	 height: 200px;
+   }
+
+
+   .new_rgb{
+	 width: 300px;
+	 height: 200px;
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 z-index: -100;
+   }
+   #img_1{
+	 width: 0px;
+	 height: 200px;
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 overflow: hidden;
+	 border-right: 1px solid white;
+   }
+   #img_2{
+	 width: 0px;
+	 height: 200px;
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 overflow: hidden;
+	 border-right: 1px solid white;
+   }
+   #img_3{
+	 width: 0px;
+	 height: 200px;
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 overflow: hidden;
+	 border-right: 1px solid white;
+   }
+   .bottom{
+	 position: absolute;
+	 left: 0;
+	 bottom: 0;
+	 height: 50px;
+	 width: 300px;
+	 text-align: center;
+	 background-color: white;
+	 line-height: 50px;
+   }
+
+
+   .leading{
+	 width:100%;
+	 min-width: 1180px;
+	 height:200px;
+	 background-image: url('/static/images/b_3.png');
+	 font-family: Microsoft Yahei;
+   }
+   .leading_center{
+	 width:1180px;
+	 height:200px;
+	 margin:0 auto;
+	 position: relative;
+   }
+   .leading_center p{
+	 width:1180px;
+	 text-align: center;
+	 font-size: 30px;
+	 color: rgb(42, 7, 84);
+	 line-height: 100px;
+	 height: 100px;
+
+   }
+   .down1{
+	 position: absolute;
+	 top:100px;
+	 left: 450px;
+	 width: 60px;
+	 height: 30px;
+   }
+   .down2{
+	 position: absolute;
+	 top:100px;
+	 left: 550px;
+	 width: 60px;
+	 height: 30px;
+   }
+   .down3{
+	 position: absolute;
+	 top:100px;
+	 left: 650px;
+	 width: 60px;
+	 height: 30px;
+   }
+
+   .bg{
+	 width: 100%;
+	 height: 600px;
+	 position: relative;
+	 background-color: rgb(243， 133， 195);
+   }
+
+   #canvas{
+	 width: 100%;
+	 min-width: 1180px;
+	 height: 100%;
+	 min-height: 400px;
+	 display: block;
+	 opacity: .8;
+	 background-color: rgb(243， 133， 195);
+   }
+
+   #colored{
+	 position: absolute;
+	 margin: 0 auto;
+	 top: 0;
+	 width:100%;
+	 min-width: 1180px;
+	 background-color: rgba(255, 255, 255, 0.0);
+   }
+
+   .colored_img{
+	 margin: 0 auto;
+	 width: 1180px;
+	 height: 400px;
+	 background-color: rgba(255, 255, 255, 0.0);
+	 padding: 50px 0px;
+	 position: relative;
+   }
+   .colored_img input{
+	 display: none;
+   }
+   .colored_img button{
+	 border-radius: 10px;
+	 outline:none;
+	 cursor:pointer;
+	 width: 650px;
+	 height: 50px;
+	 margin:0 250px;
+	 font-size: 20px;
+	 color: white;
+	 text-align: center;
+	 text-decoration: none;
+	 border: 0px solid red;
+	 transition-duration: 0.4s;
+	 background:-webkit-linear-gradient(to right, rgba(255, 208, 216, 0.6), rgba(236, 138, 187, 1.0), rgba(255, 208, 216, 0.6));
+	 background:linear-gradient(to right, rgba(255, 208, 216, 0.6), rgba(236, 138, 187, 1.0), rgba(255, 208, 216, 0.6));
+   }
+
+   .colored_img img{
+	 margin-top: 50px;
+	 margin-left: 124px;
+	 width: 400px;
+	 height: 300px;
+	 float: left;
+   }
+
+   .before{
+	 border-radius: 10px;
+	 color: rgb(120, 108, 114);
+	 position:absolute;
+	 top: 480px;
+	 left: 236px;
+	 height: 50px;
+	 width: 200px;
+	 background-color: white;
+	 text-align: center;
+	 line-height: 50px;
+	 font-size: 20px;
+	 background:-webkit-linear-gradient(to right, white, rgb(240, 172, 172), white);
+	 background:linear-gradient(to right, white, rgb(240, 172, 172), white);
+   }
+
+   .after{
+	 border-radius: 10px;
+	 color: rgb(120, 108, 114);
+	 position:absolute;
+	 top: 480px;
+	 left: 766px;
+	 height: 50px;
+	 width: 200px;
+	 background-color: white;
+	 text-align: center;
+	 line-height: 50px;
+	 font-size: 20px;
+	 background:-webkit-linear-gradient(to right, white, rgba(240, 172, 172), white);
+	 background:linear-gradient(to right, white, rgb(240, 172, 172), white);
+   }
+
+   .end{
+	 width: 100%;
+	 min-width: 1180px;
+	 height: 200px;
+	 background-color: black;
+   }
+   .end_center{
+	 margin: 0 auto;
+	 width: 1180px;
+	 height: 190px;
+	 background-color: black;
+	 text-align: center;
+	 padding-top: 10px;
+   }
+   .end_center p{
+	 color: white;
+	 padding: 5px 0;
+	 height: 20px;
+	 line-height: 20px;
+   }
+
+  </style>
+
+</head>
+<body>
+
+  <div class="pageheader">
+	<div class="pagenav">
+	  AI项目实训大组   &nbsp;&nbsp;&nbsp;&nbsp; 带你从灰白走向彩色
+	</div>
+  </div>
+
+  <div class="head">
+	<div class="head_center">
+	  <div class="show">项 目 展 示</div>
+	  <div id="img_ex1" style="margin-left: 100px">
+		<div id="img_1"><img src="/static/images/colorimg1.jpg"></div>
+		<div class="gary"><img src="/static/images/grayimg1.jpg"></div>
+		<div class="bottom">示 例 一</div>
+	  </div>
+	  <div id="img_ex2">
+		<div id="img_2"><img src="/static/images/colorimg0.jpg"></div>
+		<div class="gary"><img src="/static/images/grayimg0.jpg"></div>
+		<div class="bottom">示 例 二</div>
+	  </div>
+	  <div id="img_ex3">
+		<div id="img_3"><img src="/static/images/colorimg3.jpg"></div>
+		<div class="gary"><img src="/static/images/grayimg3.jpg"></div>
+		<div class="bottom">示 例 三</div>
+	  </div>
+	</div>
+  </div>
+
+  <div class="leading">
+	<div class="leading_center">
+	  <p>开启图片上色之旅 &nbsp;&nbsp;&nbsp;还原你心中的风景</p>
+	  <img src="/static/images/--.png" class="down1">
+	  <img src="/static/images/--.png" class="down2">
+	  <img src="/static/images/--.png" class="down3">
+	</div>
+  </div>
+
+  <div class="bg">
+	<canvas id="canvas"></canvas>
+
+	<div id="colored">
+	  <div class="colored_img">
+        <form id="uploadForm" method="POST" enctype="multipart/form-data">
+          <input type="file" name="image_origin" id='file'>
+	      <button id="button"> &nbsp;&nbsp;&nbsp;&nbsp;点 我 选 择 图 片！！</button>
+        </form>
+	    <img src="{% if last_uploaded_image %}{{ url_for('static', filename='upload_images/' + last_uploaded_image) }}{% else %}/static/images/grayimg1.jpg{% endif %}" id="gray">
+	    <img src="{% if processed_image %}{{ url_for('static', filename='processed_images/' + processed_image)}}{% else %}/static/images/colorimg1.jpg{% endif %}" class="img_r" id="rgb">
+
+	    <div class="before">原 始 图 片</div>
+	    <div class="after">彩 色 图 片</div>
+	  </div>
+	</div>
+  </div>
+
+  <div class="end">
+	<div class="end_center">
+	  <p>河北师范大学 软件学院 软件工程专业2017级学生</p>
+	  <p>人工智能方向 项目实训一</p>
+	  <p>AI项目实训大组成员：宋子豪 付春江 高新月 张引硕 黄瑞如</p>
+	</div>
+  </div>
+
+  <script src="/static/js/jquery.js"></script>
+  <script src="/static/js/55ac9ea30001ace700000000.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      var file = document.getElementById('file');
+	  var button = document.getElementById('button');
+	  $(button).click(function() {
+	    $(file).click();
+        return false;
+	  });
+
+      $(file).change(function () {
+        $('#uploadForm').submit();
+      });
+    });
+  </script>
+
+  <script type="text/javascript">
+	$(document).ready(function () {
+      var img_ex1 = document.getElementById('img_ex1');
+	  var img_ex2 = document.getElementById('img_ex2');
+	  var img_ex3 = document.getElementById('img_ex3');
+	  var img_1 = document.getElementById('img_1');
+	  var img_2 = document.getElementById('img_2');
+	  var img_3 = document.getElementById('img_3');
+	  img_ex1.onmousemove = function(ev){
+	    var ol = ev.clientX - img_ex1.getBoundingClientRect().left;
+	    img_1.style.width = ol + 'px';
+	  }
+	  img_ex2.onmousemove = function(ev){
+	    var ol = ev.clientX - img_ex2.getBoundingClientRect().left;
+	    img_2.style.width = ol + 'px';
+	  }
+	  img_ex3.onmousemove = function(ev){
+	    var ol = ev.clientX - img_ex3.getBoundingClientRect().left;
+	    img_3.style.width = ol + 'px';
+	  }
+    });
+  </script>
+  <script type="text/javascript">
+	$(document).ready(function () {
+      var canvas = document.getElementById('canvas'),
+		  ctx = canvas.getContext('2d'),
+		  // ctx.fillStyle = '#FFD0D8',
+		  w = canvas.width = canvas.width,
+		  h = canvas.height = canvas.height,
+
+		  hue = 217,
+		  stars = [],
+		  count = 0,
+		  maxStars = 1100;                //星星数量,默认1300
+	  var canvas2 = document.createElement('canvas'),
+		  ctx2 = canvas2.getContext('2d');
+	  canvas2.width = 100;
+	  canvas2.height = 100;
+	  var half = canvas2.width / 2,
+		  gradient2 = ctx2.createRadialGradient(half, half, 0, half, half, half);
+	  gradient2.addColorStop(0.025, '#CCC');
+	  gradient2.addColorStop(0.1, 'hsl(' + hue + ', 61%, 33%)');
+	  gradient2.addColorStop(0.25, 'hsl(' + hue + ', 64%, 6%)');
+	  gradient2.addColorStop(1, 'transparent');
+
+	  ctx2.fillStyle = gradient2;
+	  ctx2.beginPath();
+	  ctx2.arc(half, half, half, 0, Math.PI * 2);
+	  ctx2.fill();
+
+	  // End cache
+	  function random(min, max) {
+	    if (arguments.length < 2) {
+		  max = min;
+		  min = 0;
+	    }
+
+	    if (min > max) {
+		  var hold = max;
+		  max = min;
+		  min = hold;
+	    }
+
+	    return Math.floor(Math.random() * (max - min + 1)) + min;
+	  }
+
+	  function maxOrbit(x, y) {
+	    var max = Math.max(x, y),
+		    diameter = Math.round(Math.sqrt(max * max + max * max));
+	    return diameter / 2;
+	    //星星移动范围，值越大范围越小，
+	  }
+
+	  var Star = function() {
+
+	    this.orbitRadius = random(maxOrbit(w, h));
+	    this.radius = random(60, this.orbitRadius) / 10;       //星星大小,值越大星星越小,默认8
+
+	    this.orbitX = w / 2;
+	    this.orbitY = h / 2;
+	    this.timePassed = random(0, maxStars);
+	    this.speed = random(this.orbitRadius) / 80000;        //星星移动速度,值越大越慢,默认5W
+
+	    this.alpha = random(2, 10) / 10;
+
+	    count++;
+	    stars[count] = this;
+	  }
+
+	  Star.prototype.draw = function() {
+	    var x = Math.sin(this.timePassed) * this.orbitRadius + this.orbitX,
+		    y = Math.cos(this.timePassed) * this.orbitRadius + this.orbitY,
+		    twinkle = random(10);
+
+	    if (twinkle === 1 && this.alpha > 0) {
+		  this.alpha -= 0.05;
+	    } else if (twinkle === 2 && this.alpha < 1) {
+		  this.alpha += 0.05;
+	    }
+
+	    ctx.globalAlpha = this.alpha;
+	    ctx.drawImage(canvas2, x - this.radius / 2, y - this.radius / 2, this.radius, this.radius);
+	    this.timePassed += this.speed;
+	  }
+
+	  for (var i = 0; i < maxStars; i++) {
+	    new Star();
+	  }
+
+	  function animation() {
+	    ctx.globalCompositeOperation = 'source-over';
+	    ctx.globalAlpha = 0.5;                                 //尾巴
+	    //ctx.fillStyle = 'hsla(' + hue + ', 64%, 6%, 2)';
+	    ctx.fillStyle = '#FFD0D8'
+	    ctx.fillRect(0, 0, w, h)
+
+	    ctx.globalCompositeOperation = 'lighter';
+	    for (var i = 1,
+		         l = stars.length; i < l; i++) {
+		  stars[i].draw();
+	    };
+
+	    window.requestAnimationFrame(animation);
+	  }
+
+	  animation();
+    });
+  </script>
+
+</body>
+</html>
